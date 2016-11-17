@@ -7,10 +7,16 @@ public class MD5Encipher {
 	static char[] hex = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'}; 
 
     
-    public static String doMD5Encipher(String str) throws NoSuchAlgorithmException{
-        MessageDigest md5 = MessageDigest.getInstance("MD5");//申明使用MD5算法
-        md5.update(str.getBytes());//
-        return byte2str(md5.digest());
+    public static String doMD5Encipher(String str){
+    	String ret = "";
+    	try {
+    		MessageDigest md5 = MessageDigest.getInstance("MD5");//申明使用MD5算法
+    		md5.update(str.getBytes());//
+    		ret = byte2str(md5.digest());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	return ret;
     }
     
     public static void main(String[] args) throws NoSuchAlgorithmException{
