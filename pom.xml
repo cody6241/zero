@@ -144,6 +144,7 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
+		<!-- log end -->
 		<!-- https://mvnrepository.com/artifact/aspectj/aspectjweaver -->
 		<dependency>
 		    <groupId>aspectj</groupId>
@@ -155,8 +156,20 @@
             <artifactId>jstl</artifactId>  
             <version>1.2</version>  
             <scope>runtime</scope>  
-        </dependency>  		
-	<!-- log end -->
+        </dependency> 
+        <!-- 定时任务的依赖包 --> 		
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>1.8.5</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-httpclient/commons-httpclient -->
+		<dependency>
+		    <groupId>commons-httpclient</groupId>
+		    <artifactId>commons-httpclient</artifactId>
+		    <version>3.1</version>
+		</dependency>
+
 	</dependencies>
   
   
