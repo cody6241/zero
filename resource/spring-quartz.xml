@@ -7,6 +7,9 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd" default-autowire="byName" default-lazy-init="false">
 
+	<!-- 执行定时任务的bean -->
+	<bean id="jobExecuter" class="com.zero.quartz.JobExecuter"/>
+
 	<!-- 每分钟执行task -->	
 	<bean id="quarterHourJob"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -28,7 +31,7 @@
 		</property>
 		 
 		<property name="cronExpression">
-			<value>0 0/15 * * * ?</value>
+			<value>0 0/1 * * * ?</value>
 		</property>
 	</bean>
 	

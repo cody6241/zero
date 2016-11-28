@@ -53,6 +53,5 @@
 		</tx:attributes>
 	</tx:advice>
 	
-	<!-- 执行定时任务的bean -->
-	<bean id="jobExecuter" class="com.zero.quartz.JobExecuter"/>
+
 </beans>
