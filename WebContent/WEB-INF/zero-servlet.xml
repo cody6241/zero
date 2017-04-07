@@ -9,11 +9,13 @@
 	<!-- 扫描web包，应用Spring的注解 -->
 	<context:component-scan base-package="com.zero.web"/>
 	
-	<!-- 配置视图解析器，将ModelAndView及字符串解析为具体的页面 -->
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-		p:viewClass="org.springframework.web.servlet.view.JstlView" 
-		p:prefix="/WEB-INF/jsp/"
-		p:suffix=".jsp" />
-
+	<!--视图解释器 -->  
+	<bean id="viewResolver"  
+	      class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">  
+	    <property name="suffix">  
+	        <value>.html</value>  
+	    </property>  
+	    <property name="contentType" value="text/html;charset=UTF-8"></property>  
+	</bean>  
+	
 </beans>

@@ -27,8 +27,12 @@ public class LoginController{
 	}
 	
 	@RequestMapping(value = "/index.html")
-	public String index(){
-		return "../../index";
+	public ModelAndView index(){
+//		return "../../index";
+        ModelAndView mv = new ModelAndView("main");  
+        mv.addObject("title", "Spring MVC And Freemarker");  
+        mv.addObject("content", " Hello world ， test my first spring mvc ! ");  
+        return mv;  
 	}
 	
 	@RequestMapping(value = "/loginCheck.html")

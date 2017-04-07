@@ -33,6 +33,12 @@
 		<servlet-class>
 			org.springframework.web.servlet.DispatcherServlet
 		</servlet-class>
+		<!-- 如果不加该init-param配置，则默认在web.xml同目录下增加一个   工程名-servlet.xml  的配置文件
+		<init-param>
+	        <param-name>contextConfigLocation</param-name>
+	        <param-value>/WEB-INF/dispatcher.xml</param-value>
+	    </init-param>
+	     -->
 		<load-on-startup>3</load-on-startup>
 	</servlet>
 
