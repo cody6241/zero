@@ -1,5 +1,6 @@
 package com.zero.web;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,12 +9,17 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.utils.MD5Encipher;
+import com.zero.directive.TestDirective;
 import com.zero.domain.User;
 import com.zero.service.UserService;
+import com.zero.tags.TagCreator;
+
+import freemarker.template.TemplateException;
 
 @Controller
 public class LoginController{
@@ -27,12 +33,22 @@ public class LoginController{
 	}
 	
 	@RequestMapping(value = "/index.html")
-	public ModelAndView index(){
-//		return "../../index";
-        ModelAndView mv = new ModelAndView("main");  
-        mv.addObject("title", "Spring MVC And Freemarker");  
-        mv.addObject("content", " Hello world ， test my first spring mvc ! ");  
-        return mv;  
+	public String index(ModelMap root) throws IOException, TemplateException{
+//		Map<String,Object> root = new HashMap<String,Object>();
+//		root.put("newTag", new TagCreator());
+//		root.put("title", "abc");
+//		response.setContentType("text/html;charset=UTF-8");
+//		String reqPath = request.getServletPath();
+//		String rootPath = StringUtil.getRootPath();
+//		String htmlDir = rootPath +"/WEB-INF/html";
+//		Configuration cfg = FreeMarkerUtil.getFolderCfg(htmlDir);
+//		Template temp = cfg.getTemplate("index.html");
+//		temp.process(root, response.getWriter());
+		root.put("newTag", new TagCreator());
+		root.put("fm", new TestDirective());
+		root.put("title", "张三");
+		return "index";
+		
 	}
 	
 	@RequestMapping(value = "/loginCheck.html")

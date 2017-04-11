@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Insert title here</title>
+</head>
+<#assign tt = title/>
+<#assign userInfoTag = newTag("userInfoTag")>
+<#assign user = userInfoTag()>
+<body>
+	${tt},
+	<br/>
+	张三的：${title},${user.userName}
+	<br/>
+    <@fm url="add"><input type="button" value="添加"/></@fm>  
+    <@fm url="del"><input type="button" value="删除"></@fm>
+</body>
+</html>
