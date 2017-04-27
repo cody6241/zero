@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.zero.mdao.UserDAO">
+	
+	<resultMap  id="UserMap" type="User">
+		<id property="userId" column="user_id"></id>
+		<result property="userName" column="user_name"/>
+		<result property="password" column="password"/>
+		<result property="credits" column="credits"/>
+		<result property="lastIp" column="last_ip"/>
+		<result property="lastVisit" column="last_visit"/>
+	</resultMap>
+	
+	<select id="findUserByUserName" resultMap="UserMap">
+		 SELECT user_id,user_name,password,credits FROM t_user WHERE user_name =#{userName} 
+	</select>
+		<select id="getMatchCount" resultType="int">
+		SELECT count(*) FROM t_user  WHERE user_name =#{userName} and password=#{password} 
+    </select>
+	
+	<update id="updateLoginInfo" parameterType="User">
+		UPDATE t_user SET last_visit=#{lastVisit},last_ip=#{lastIp},credits=#{credits} WHERE user_id =#{userId}
+	</update>
+
+	<insert id="insertLoginLog" parameterType="LoginLog">
+		INSERT INTO t_login_log(user_id,ip,login_datetime) VALUES(#{userId},#{ip},#{loginDate})
+	</insert>
+</mapper>

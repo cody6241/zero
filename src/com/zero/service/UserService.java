@@ -1,13 +1,18 @@
 package com.zero.service;
 
+import javax.annotation.Resource;
+
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.utils.MD5Encipher;
+import com.utils.MyBatisUtil;
 import com.zero.dao.LoginLogDao;
 import com.zero.dao.UserDao;
 import com.zero.domain.LoginLog;
 import com.zero.domain.User;
+import com.zero.mdao.UserDAO;
 
 @Service
 public class UserService {
@@ -16,10 +21,16 @@ public class UserService {
 	private UserDao userDao;
 	
 	@Autowired
+	private UserDAO userDAO;
+	
+	@Autowired
 	private LoginLogDao loginLogDao;
 
 	public boolean hasMatchUser(String userName, String password) {
-		int matchCount =userDao.getMatchCount(userName, password);
+//		int matchCount =userDao.getMatchCount(userName, password);
+//		SqlSession session = MyBatisUtil.getSession();
+//		UserDAO userDAO = session.getMapper(UserDAO.class);
+		int matchCount = userDAO.getMatchCount(userName, password);
 		return matchCount > 0;
 	}
 	
